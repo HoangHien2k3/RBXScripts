@@ -1,9 +1,11 @@
 -- Main Loading --
 local starterui
 starterui = game:GetService("StarterGui")
-_G.KeyScripts = {}
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangHien2k3/RBXScripts/refs/heads/connect/Key_I"))()
+KeyScripts = {
+    [994732206] = "https://raw.githubusercontent.com/HoangHien2k3/RBXScripts/refs/heads/script/BF",
+    [3754482795] = "https://raw.githubusercontent.com/HoangHien2k3/RBXScripts/refs/heads/script/ET"
+}
 
 function ntf(r, t, x)
     starterui:SetCore("SendNotification", {
@@ -14,7 +16,7 @@ function ntf(r, t, x)
 end
 
 local function loadscript(expierence)
-    local to_URL = _G.KeyScripts[expierence]
+    local to_URL = KeyScripts[expierence]
     if to_URL then
         local success, result = pcall(function()
             return loadstring(game:HttpGet(to_URL))()
