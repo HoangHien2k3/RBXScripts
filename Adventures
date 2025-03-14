@@ -1,6 +1,6 @@
 -- Main Loading --
 local starterui
-starterui = game:GetService("CoreGui")
+starterui = game:GetService("StarterGui")
 _G.KeyScripts = {}
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangHien2k3/RBXScripts/refs/heads/connect/Key_I"))()
