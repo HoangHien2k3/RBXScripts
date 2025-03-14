@@ -29,7 +29,7 @@ end
 pcall(function()
     print("Mini UI - v0.02")
     print("Wait...")
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangHien2k3/refs/heads/main/BladeHits"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangHien2k3/Power/refs/heads/main/BladeHits"))()
     print("Loaded Auto Attacking Function.")
 end)
 
