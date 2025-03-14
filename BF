@@ -29,7 +29,7 @@ end
 pcall(function()
     print("Mini UI - v0.02")
     print("Wait...")
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangHien2k3/Arknight/refs/heads/Source/BladeHits"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangHien2k3/refs/heads/main/BladeHits"))()
     print("Loaded Auto Attacking Function.")
 end)
 
@@ -278,10 +278,10 @@ end
 function ArkS_LT()
     if _G.lct == "VN" then
         print("Selecting Language:\n\"" .. _G.lct)
-        paste("https://raw.githubusercontent.com/HoangHien2k3/Arknight/refs/heads/main/LanVN")
+        paste("https://raw.githubusercontent.com/HoangHien2k3/Power/refs/heads/language/LanVN")
     elseif _G.lct == "US" then
         print("Selecting Language:\n\"" .. _G.lct)
-        paste("https://raw.githubusercontent.com/HoangHien2k3/Arknight/refs/heads/main/LanEN")
+        paste("https://raw.githubusercontent.com/HoangHien2k3/Power/refs/heads/language/LanEN")
     end
 end
 
