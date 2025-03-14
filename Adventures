@@ -1,9 +1,9 @@
 -- Main Loading --
 local starterui
-starterui = game:GetService("CoreGui"))
+starterui = game:GetService("CoreGui")
 _G.KeyScripts = {}
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangHien2k3/refs/heads/connect/Key_I"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangHien2k3/RBXScripts/refs/heads/connect/Key_I"))()
 
 function ntf(r, t, x)
     starterui:SetCore("SendNotification", {
