@@ -1,0 +1,32 @@
+-- Main Loading --
+local starterui
+starterui = game:GetService("CoreGui"))
+_G.KeyScripts = {}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangHien2k3/refs/heads/connect/Key_I"))()
+
+function ntf(r, t, x)
+    starterui:SetCore("SendNotification", {
+        Title = r,
+        Text = t,
+        Duration = x,
+    })
+end
+
+local function loadscript(expierence)
+    local to_URL = _G.KeyScripts[expierence]
+    if to_URL then
+        local success, result = pcall(function()
+            return loadstring(game:HttpGet(to_URL))()
+        end)
+        if not success then
+            ntf("Thất bại!", "Yêu cầu sử dụng VPN, tải lại Script \n Lỗi không thể kết nối!", 1.5)
+        end
+    else
+        game:GetService("Players").LocalPlayer:Kick("Tạm thời chưa có script dành cho trò chơi này nha! ExpierenceId[" .. game.GameId .. "]")
+    end
+end
+
+if game:IsLoaded() then
+    loadscript(game.GameId)
+end
