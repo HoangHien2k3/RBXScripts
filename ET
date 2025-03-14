@@ -1,0 +1,310 @@
+-- Elemental Tycoon: Machine Gun --
+local preGui = "AimbotSkill_PVPScript"
+for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+    if v:IsA("ScreenGui") and v.Name == preGui then
+        v:Destroy()
+    end
+end
+
+local Elemental_SG, RifleToggler, DelayBox, SwitchMode, EquipAllTool, MultiShot, CurrentMode
+
+Elemental_SG = Instance.new("ScreenGui", game:GetService("CoreGui"))
+RifleToggler = Instance.new("TextButton", Elemental_SG)
+DelayBox = Instance.new("TextBox", Elemental_SG)
+SwitchMode = Instance.new("TextButton", Elemental_SG)
+EquipAllTool = Instance.new("TextButton", Elemental_SG)
+
+Elemental_SG.Name = "AimbotSkill_PVPScript"
+MultiShot = false
+CurrentMode = 1
+_G.DelayTime = _G.DelayTime or 0.05
+
+function findNearestPlayer()
+    local localPlayer = game:GetService("Players").LocalPlayer
+    local character = localPlayer.Character
+    if not character then return nil end
+    
+    local nearestPlayer = nil
+    local shortestDistance = math.huge
+    
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player ~= localPlayer and player.Character then
+            local distance = (player.Character.HumanoidRootPart.Position - character.HumanoidRootPart.Position).magnitude
+            if distance < shortestDistance then
+                shortestDistance = distance
+                nearestPlayer = player
+            end
+        end
+    end
+    return nearestPlayer
+end
+
+function findRandomPlayer()
+    local localPlayer = game:GetService("Players").LocalPlayer
+    local character = localPlayer.Character
+    if not character then return nil end
+
+    local players = game:GetService("Players"):GetPlayers()
+    table.remove(players, table.find(players, localPlayer))
+
+    if #players == 0 then return nil end
+
+    local randomPlayer = players[math.random(1, #players)]
+    
+    return randomPlayer
+end
+
+function findFarthestPlayer()
+    local localPlayer = game:GetService("Players").LocalPlayer
+    local character = localPlayer.Character
+    if not character then return nil end
+
+    local farthestPlayer = nil
+    local longestDistance = 0
+
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player ~= localPlayer and player.Character then
+            local distance = (player.Character.HumanoidRootPart.Position - character.HumanoidRootPart.Position).magnitude
+            if distance > longestDistance then
+                longestDistance = distance
+                farthestPlayer = player
+            end
+        end
+    end
+    
+    return farthestPlayer
+end
+
+function findCustomPlayer(name)
+    local localPlayer = game:GetService("Players").LocalPlayer
+    local character = localPlayer.Character
+    if not character then return nil end
+
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player.Name == name and player ~= localPlayer and player.Character then
+            return player
+        end
+    end
+    
+    return nil
+end
+
+local nearestPlayer_x = findNearestPlayer()
+function AttackNoCD_JK()
+    local localPlayer = game:GetService("Players").LocalPlayer
+    local character = localPlayer.Character
+    if not character then return end
+    
+    local targetPosition = nearestPlayer_x and nearestPlayer_x.Character.HumanoidRootPart.Position or character.HumanoidRootPart.Position
+    
+    for _, tool in ipairs(character:GetChildren()) do
+        if tool:IsA("Tool") then
+            if tool.Name == "Space Gun" then
+                local args = {
+                    [1] = "Space",
+                    [2] = "Space Gun",
+                    [3] = {
+                        ["Camera"] = CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0),
+                        ["Mouse"] = targetPosition
+                        }
+                    }
+                
+                game:GetService("ReplicatedStorage").Remotes.DoMagic:FireServer(unpack(args))
+                wait(_G.DelayTime)
+            elseif tool.Name == "Blackhole Orb" then
+                local args = {
+                    [1] = "Space",
+                    [2] = "Blackhole Orb",
+                    [3] = {
+                        ["Camera"] = CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0),
+                        ["Mouse"] = targetPosition
+                        }
+                    }
+                
+                game:GetService("ReplicatedStorage").Remotes.DoMagic:FireServer(unpack(args))
+                wait(_G.DelayTime)
+            elseif tool.Name == "Moon Splitter" then
+                local args = {
+                    [1] = "Space",
+                    [2] = "Moon Splitter",
+                    [3] = {
+                        ["Camera"] = CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0),
+                        ["Mouse"] = targetPosition
+                        }
+                    }
+                
+                game:GetService("ReplicatedStorage").Remotes.DoMagic:FireServer(unpack(args))
+                wait(_G.DelayTime)
+            elseif tool.Name == "Asteroid Belt" then
+                local args = {
+                    [1] = "Space",
+                    [2] = "Asteroid Belt",
+                    [3] = {
+                        ["Camera"] = CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0),
+                        ["Mouse"] = targetPosition
+                        }
+                    }
+                
+                game:GetService("ReplicatedStorage").Remotes.DoMagic:FireServer(unpack(args))
+                wait(_G.DelayTime)
+            elseif tool.Name == "Meteor Jam" then
+                local args = {
+                    [1] = "Space",
+                    [2] = "Meteor Jam",
+                    [3] = {
+                        ["Camera"] = CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0),
+                        ["Mouse"] = targetPosition
+                        }
+                    }
+                
+                game:GetService("ReplicatedStorage").Remotes.DoMagic:FireServer(unpack(args))
+                wait(_G.DelayTime)
+            elseif tool.Name == "Cosmic Remote" then
+                local args = {
+                    [1] = "Space",
+                    [2] = "Cosmic Remote",
+                    [3] = {
+                        ["Camera"] = CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0),
+                        ["Mouse"] = targetPosition
+                        }
+                    }
+                
+                game:GetService("ReplicatedStorage").Remotes.DoMagic:FireServer(unpack(args))
+                wait(_G.DelayTime)
+            end
+        end
+    end
+end
+
+function c(ui)
+    local vk = Instance.new("UICorner")
+    vk.Parent = ui
+    vk.CornerRadius = UDim.new(0.2, 0)
+end
+
+function ntf(title, text)
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = 1.25,
+        Button1 = "Reset Delay Time ?",
+        Callback = (function()
+            _G.DelayTime = 0.05
+            print("Delay Time Reset.")
+        end)
+    })
+end
+
+RifleToggler.BackgroundTransparency = 0.5
+RifleToggler.BackgroundColor3 = Color3.new(0, 0, 0)
+RifleToggler.Position = UDim2.new(0.25, 0, 0.58, 0)
+RifleToggler.Size = UDim2.new(0.05, 0, 0.1, 0)
+RifleToggler.TextScaled = true
+RifleToggler.TextColor3 = Color3.new(1, 1, 1)
+RifleToggler.Font = Enum.Font.Code
+RifleToggler.Text = "AutoShoot: OFF"
+RifleToggler.Visible = true
+
+DelayBox.BackgroundTransparency = 0.5
+DelayBox.BackgroundColor3 = Color3.new(0, 0, 0)
+DelayBox.Position = UDim2.new(0.32, 0, 0.58, 0)
+DelayBox.Size = UDim2.new(0.05, 0, 0.1, 0)
+DelayBox.TextScaled = true
+DelayBox.TextColor3 = Color3.new(1, 1, 0)
+DelayBox.Font = Enum.Font.Code
+DelayBox.Text = ""
+DelayBox.ClearTextOnFocus = false
+DelayBox.PlaceholderText = "Delay"
+DelayBox.Visible = true
+
+SwitchMode.BackgroundTransparency = 0.5
+SwitchMode.BackgroundColor3 = Color3.new(0, 0, 0)
+SwitchMode.Position = UDim2.new(0.39, 0, 0.58, 0)
+SwitchMode.Size = UDim2.new(0.05, 0, 0.1, 0)
+SwitchMode.TextScaled = true
+SwitchMode.TextColor3 = Color3.new(1, 1, 1)
+SwitchMode.Font = Enum.Font.Code
+SwitchMode.Text = "Nearest"
+SwitchMode.Visible = true
+
+EquipAllTool.BackgroundTransparency = 0.5
+EquipAllTool.BackgroundColor3 = Color3.new(0, 0, 0)
+EquipAllTool.Position = UDim2.new(0.46, 0, 0.58, 0)
+EquipAllTool.Size = UDim2.new(0.05, 0, 0.1, 0)
+EquipAllTool.TextScaled = true
+EquipAllTool.TextColor3 = Color3.new(1, 1, 1)
+EquipAllTool.Font = Enum.Font.Code
+EquipAllTool.Text = "Equip All"
+EquipAllTool.Visible = true
+
+c(RifleToggler)
+c(DelayBox)
+c(SwitchMode)
+c(EquipAllTool)
+
+-- Connect button --
+
+RifleToggler.MouseButton1Click:Connect(function()
+    if MultiShot then
+        MultiShot = false
+        RifleToggler.Text = "AutoShoot: OFF"
+        RifleToggler.TextColor3 = Color3.new(1, 1, 1)
+    else
+        MultiShot = true
+        RifleToggler.Text = "AutoShoot: ON"
+        RifleToggler.TextColor3 = Color3.new(0, 1, 0)
+        
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if MultiShot then
+                AttackNoCD_JK()
+                task.wait(_G.DelayTime)
+            end
+        end)
+    end
+end)
+
+DelayBox.FocusLost:Connect(function(enterPressed)
+    if enterPressed then
+        local newDelayTime = DelayBox.Text
+        local CurrentNewDelayTime = tonumber(newDelayTime)
+        if CurrentNewDelayTime > 0 then
+            _G.DelayTime = CurrentNewDelayTime
+            ntf("《Skill Delay Time》", "Current Delay Time Between Each Shot Is: [" .. _G.DelayTime .. "].")
+            wait(1.5)
+            DelayBox.Text = ""
+        else
+            ntf("》Invalid Delay Time《", "Can't Set Delay Time Between Each Shot Is Lower Than: [0].")
+        end
+    end
+end)
+
+SwitchMode.MouseButton1Click:Connect(function()
+    CurrentMode = CurrentMode + 1
+    if CurrentMode == 2 then
+        nearestPlayer_x = nil
+        nearestPlayer_x = findFarthestPlayer()
+        SwitchMode.Text = "Farthest"
+    elseif CurrentMode == 3 then
+        nearestPlayer_x = nil
+        nearestPlayer_x = findRandomPlayer()
+        SwitchMode.Text = "Random"
+    elseif CurrentMode == 4 then
+        nearestPlayer_x = nil
+        nearestPlayer_x = findCustomPlayer(plr)
+        SwitchMode.Text = "Custom"
+    elseif CurrentMode >= 5 then
+        nearestPlayer_x = nil
+        nearestPlayer_x = findNearestPlayer()
+        SwitchMode.Text = "Nearest"
+        CurrentMode = 1
+    end
+end)
+
+EquipAllTool.MouseButton1Click:Connect(function()
+    for i, v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+        if v:IsA("Tool") then
+            v.Parent = game:GetService("Players").LocalPlayer.Character
+        end
+    end
+    ntf("《Equipped All》", "It's all tool equipped.")
+end)
