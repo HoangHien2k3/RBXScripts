@@ -2,12 +2,8 @@ local ws = game:GetService("Workspace")
 
 -- lol --
 local url = {
-    "https://raw.githubusercontent.com/HoangHien2k3/Tensura/refs/heads/main/Storage/Modules.lua",
-    "https://raw.githubusercontent.com/newredz/BloxFruits/refs/heads/main/Utils/Module.luau"
+    "https://raw.githubusercontent.com/HoangHien2k3/Tensura/refs/heads/main/Storage/Modules.lua"
 }
 
 local modules_0 = loadstring(game:HttpGet(url[1]))()
-local modules_1 = loadstring(game:HttpGet(url[2]))()
-
 local pr = modules_0.PR("Hello worlds")
-local fa = modules_1.FastAttack()
