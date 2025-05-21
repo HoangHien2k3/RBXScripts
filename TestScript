@@ -3,6 +3,6 @@ local ws = game:GetService("Workspace")
 -- lol --
 local url = "https://raw.githubusercontent.com/HoangHien2k3/Tensura/refs/heads/main/Storage/Modules.lua"
 local urlGet = game:HttpGet(url)
-local modules = require(urlGet)
+local modules = loadstring(urlGet)()
 
 local pr = modules.PR("Hello worlds")
